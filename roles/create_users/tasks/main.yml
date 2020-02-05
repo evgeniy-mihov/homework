@@ -1,0 +1,11 @@
+- name: create user labsudo
+  user: name=labsudo shell=/bin/bash password='12345'
+
+- name: add ssh key to remote hosts
+  authorized_key: user=labsudo key="{{ lookup('file', '/root/.ssh/mykey.pub') }}"
+
+- name: create user lab
+  user: name=lab password=12345
+
+- name: Add SSH keys to remote hosts
+  authorized_key: user=lab key="{{ lookup('file', "/root/.ssh/mykey.pub") }}"
