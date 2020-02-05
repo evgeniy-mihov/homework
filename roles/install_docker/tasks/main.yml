@@ -1,0 +1,19 @@
+- name: download docker installer
+  get_url:
+    url: https://get.docker.com/
+    dest: /root/install_docker.sh
+    mode: 0700
+
+- name: install docker
+  shell: /root/install_docker.sh
+
+- name: remove the docker installer file 
+  file:
+    state: absent
+    path: /root/install_docker.sh
+
+- name: start docker
+  service:
+    name: docker
+    state: started
+    enabled: yes

@@ -1,0 +1,15 @@
+---
+# vars file for ansible-drone
+
+drone_server_enable: "true"
+drone_version: "latest"
+drone_server_host: "http://192.168.1.101:8080"
+drone_server_proto: "https"
+drone_rpc_secret: "496713606325ae3a750a15d72e3e98d1"
+drone_github_client_id: "ffe9016f2cb838abf103"
+drone_github_client_secret: "5f5d878c39216ef32f2572f21ce4f287b5bee3d1"
+
+drone_agent_enable: "true"
+drone_version: "latest"
+drone_rpc_server: "http://192.168.1.101:8080"
+drone_rpc_secret: "496713606325ae3a750a15d72e3e98d1"
