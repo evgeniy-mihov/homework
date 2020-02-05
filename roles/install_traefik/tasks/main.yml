@@ -1,0 +1,41 @@
+- name: check traefik dir
+  file:
+    path: /var/www/traefik
+    state: directory
+    owner: root
+    group: root
+
+- name: check acme.json file 
+  file:
+    path: /var/www/traefik/acme.json
+    state: touch
+    mode: 0600
+
+- name: add traefik.toml file
+  copy:
+    src: ../templates/traefik.toml.j2
+    dest: /var/www/traefik/traefik.toml
+    mode: 0600
+
+- name: create web network
+  docker_network:
+    name: web
+
+- name: create traefik container
+  docker_container:
+    name: traefik
+    image: traefik:1.7
+    restart_policy: unless-stopped
+    networks:
+      - name: web
+    ports:
+      - "888:888"
+      - "443:443"
+    volumes:
+      - /var/www/traefik/traefik.toml:/etc/traefik/traefik.toml
+      - /var/www/traefik/acme.json:/acme.json
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      traefik.docker.network: "web"
+      traefik.port: "8080"
+      traefik.enable: "true"
