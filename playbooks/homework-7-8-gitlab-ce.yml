@@ -1,0 +1,6 @@
+---
+- hosts: home-lab
+  roles:
+    - package_for_gitlab-ce
+    - install_gitlab-ce
+

@@ -1,0 +1,5 @@
+---
+- hosts: home-lab
+  roles:
+    - install_prometeus
+    - install_prometheus_node_exporter

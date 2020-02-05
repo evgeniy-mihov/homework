@@ -1,0 +1,6 @@
+---
+- hosts: home-lab
+  roles:
+    - install_haproxy
+    - haproxy_conf
+    

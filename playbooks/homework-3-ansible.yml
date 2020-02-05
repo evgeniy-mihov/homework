@@ -1,0 +1,6 @@
+---
+- hosts: home-lab
+  roles:
+    - ntp
+    - create_users
+    - logrotate

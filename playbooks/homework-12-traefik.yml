@@ -1,0 +1,4 @@
+---
+- hosts: home-lab
+  roles:
+    - install_traefik

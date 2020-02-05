@@ -1,0 +1,6 @@
+---
+- hosts: home-lab
+  roles:
+    - package_for_docker
+    - install_docker
+    - create_containers
