@@ -1,0 +1,2 @@
+ - name: copy logrotate conf
+   template: src=apache dest=/etc/logrotate.d/apache

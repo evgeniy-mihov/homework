@@ -1,0 +1,11 @@
+- name: install ntp
+  yum: name=ntp state=present
+
+- name: check ntp
+  service: name=ntpd state=started enabled=yes
+
+- name: copy ntp conf
+  copy: src="ntp.conf" dest="/etc/ntp.conf"
+
+- name: restart ntp
+  service: name=ntpd state=restarted

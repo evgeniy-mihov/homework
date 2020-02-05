@@ -1,0 +1,21 @@
+/data/apache2/logs/*.log {
+
+daily
+
+missingok
+
+rotate 50
+
+notifempty
+
+delaycompress
+
+sharedscripts
+
+postrotate
+
+sudo /data/apache2/bin/apachectl -k graceful >> /dev/null
+
+endscript
+
+}
